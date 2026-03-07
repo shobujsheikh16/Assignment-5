@@ -29,8 +29,8 @@ function render(data) {
 
         const borderColor = isClosed ? 'border-t-[#A855F7]' : 'border-t-[#4ADE80]';
         const iconPath = isClosed 
-            ? 'B13-A5-Github-Issue-Tracker/assets/Closed- Status .png' 
-            : 'B13-A5-Github-Issue-Tracker/assets/Open-Status.png';
+            ? './assets/Closed- Status .png' 
+            : './assets/Open-Status.png';
 
         const card = document.createElement('div');
         card.className = `bg-white p-6 rounded-xl border border-gray-100 border-t-4 ${borderColor} shadow-sm hover:shadow-md transition cursor-pointer flex flex-col justify-between`;
@@ -100,20 +100,26 @@ function showModalFromMemory(id) {
             </div>
         </div>`;
     document.getElementById('my_modal_5').showModal();
-}
+};
+
 function filterIssues(status, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('tab-active');
+    const buttons = document.querySelectorAll('.tab-btn');
+    
+    buttons.forEach(b => {
+        b.classList.remove('tab-active', 'bg-[#4c00ff]', 'text-white');
         b.classList.add('bg-transparent', 'text-gray-500');
     });
-    btn.classList.add('tab-active');
+
+    btn.classList.add('tab-active', 'bg-[#4c00ff]', 'text-white');
     btn.classList.remove('bg-transparent', 'text-gray-500');
     showLoading();
     setTimeout(() => {
-        const filtered = status === 'all' ? allIssues : allIssues.filter(i => i.status?.toLowerCase() === status);
+        const filtered = status === 'all' 
+            ? allIssues 
+            : allIssues.filter(i => i.status?.toLowerCase() === status);
         render(filtered);
     }, 200);
-}
+};
 async function handleSearch() {
     const q = document.getElementById('searchInput').value;
     if (q === "") { render(allIssues); return; }
@@ -123,6 +129,6 @@ async function handleSearch() {
         const data = await res.json();
         render(data.data || []);
     } catch (error) { console.error(error); }
-}
+};
 
 loadData();
