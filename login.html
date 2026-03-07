@@ -1,31 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<script>
-if (localStorage.getItem("isLoggedIn") === "true") {
-  window.location.href = "index.html";
-}
-</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style/style.css">
-    <!-- Font Awesome cdn link -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- tailwind + daisy css -->
-      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-      <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
-    <!-- Font Integration -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <title>Login | GitHub Issues Tracker</title>
-</head>
-<body>
-    
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
 
+</head>
+     <body class="bg-[#EAEEF2] min-h-screen flex items-center justify-center">
+        <div class="w-[460px] bg-white p-10 rounded-xl shadow-lg">
+            <div class="text-center mb-8">
+            <i class="fa-brands fa-github text-8xl text-gray-800 mb-4"></i>
+            <h1 class="text-2xl font-bold text-gray-800">GitHub Issues Tracker</h1>
+            <p class="text-gray-400 text-sm mt-1">Sign in to manage your issues</p>
+        </div>
+
+    <form onsubmit="handleLogin(event)">
+        <div class="mb-5">
+          <label class="block text-sm font-semibold mb-2">Username</label>
+          <input id="username" type="text" placeholder="Enter Username" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none"/>
+          <p class="text-xs text-blue-600 mt-1">Default: admin</p>
+        </div>
+        <div class="mb-6">
+          <label class="block text-sm font-semibold mb-2">Password</label>
+          <input id="password" type="password" placeholder="Enter Password" class="w-full border border-gray-200 rounded-lg px-4 py-3 focus:outline-none"/>
+          <p class="text-xs text-blue-600 mt-1">Default: admin123</p>
+        </div>
+
+       <button type="submit" class="w-full bg-[#4c00ff] hover:bg-indigo-700 text-white py-3 rounded-lg font-semibold">Sign In</button>
+    </form>
+       <div class="flex items-center my-8">
+          <div class="flex-grow border-t"></div>
+            <span class="mx-4 text-xs text-gray-400 font-bold">OR</span>
+          <div class="flex-grow border-t"></div>
+        </div>
+           <div class="text-center">
+           <p class="text-xs text-gray-400 mb-4">Demo Credentials:</p>
+        <div class="bg-gray-100 p-5 rounded-xl">
+            <p class="text-sm">
+            <span class="font-semibold">Username:</span> admin
+
+            <br>
+            <span class="font-semibold">Password:</span> admin123 </p>
+          </div>
+        </div>
+    </div>
+
+
+<script>
+
+function handleLogin(event){
+event.preventDefault()
+const user=document.getElementById("username").value
+const pass=document.getElementById("password").value
+
+    if(user==="admin" && pass==="admin123"){
+        localStorage.setItem("isLoggedIn","true")
+        window.location.href="index.html"
+}else{
+    alert("Invalid Username or Password")
+
+}};
+</script>
 </body>
 </html>
