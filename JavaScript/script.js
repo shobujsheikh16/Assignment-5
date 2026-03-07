@@ -101,3 +101,16 @@ function showModalFromMemory(id) {
         </div>`;
     document.getElementById('my_modal_5').showModal();
 }
+function filterIssues(status, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('tab-active');
+        b.classList.add('bg-transparent', 'text-gray-500');
+    });
+    btn.classList.add('tab-active');
+    btn.classList.remove('bg-transparent', 'text-gray-500');
+    showLoading();
+    setTimeout(() => {
+        const filtered = status === 'all' ? allIssues : allIssues.filter(i => i.status?.toLowerCase() === status);
+        render(filtered);
+    }, 200);
+}
