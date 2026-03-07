@@ -61,3 +61,43 @@ function render(data) {
         grid.appendChild(card);
     });
 }
+function showModalFromMemory(id) {
+    const item = allIssues.find(issue => issue._id === id);
+    if (!item) return;
+
+    const container = document.getElementById('details-container');
+    const isClosed = item.status?.toLowerCase() === 'closed';
+    const priorityColor = item.priority?.toLowerCase() === 'high' ? 'bg-red-500' : 'bg-orange-400';
+
+    container.innerHTML = `
+        <div class="p-10">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">${item.title}</h2>
+            <div class="flex items-center gap-3 mb-6">
+                <span class="${isClosed ? 'bg-purple-500' : 'bg-green-500'} text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase">
+                    ${isClosed ? 'Closed' : 'Opened'}
+                </span>
+                <span class="text-xs text-gray-400">
+                    • Opened by <span class="text-gray-700 font-bold">${item.author}</span> 
+                    • ${new Date(item.createdAt).toLocaleDateString('en-GB')}
+                </span>
+            </div>
+            <div class="flex gap-2 mb-8">
+                <span class="bg-pink-100 text-pink-500 text-[10px] font-bold px-3 py-1 rounded uppercase">🪲 BUG</span>
+                <span class="bg-orange-100 text-orange-500 text-[10px] font-bold px-3 py-1 rounded uppercase">HELP WANTED</span>
+            </div>
+            <p class="text-gray-500 text-[14px] leading-relaxed mb-10">${item.description || "No description provided."}</p>
+            <div class="bg-[#F8FAFC] p-6 rounded-2xl flex justify-between items-center border border-gray-100">
+                <div>
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Assignee</p>
+                    <p class="font-bold text-gray-800 text-sm">${item.author}</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-[10px] text-gray-400 font-bold uppercase mb-1">Priority</p>
+                    <span class="${priorityColor} text-white text-[10px] font-bold px-5 py-1.5 rounded-full uppercase">
+                        ${item.priority || 'MEDIUM'}
+                    </span>
+                </div>
+            </div>
+        </div>`;
+    document.getElementById('my_modal_5').showModal();
+}
