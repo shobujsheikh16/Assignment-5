@@ -32,7 +32,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
     <nav class="bg-white border-b px-8 py-3 flex justify-between items-center sticky top-0 z-50 shadow-sm">
         <div class="flex items-center gap-2 font-bold text-lg text-gray-800">
             <div class="w-8 h-8 flex items-center justify-center">
-                <img src="B13-A5-Github-Issue-Tracker/assets/github-logo.png" alt="Logo" class="w-full h-full object-contain">
+                <img src="assets/github-logo.png" alt="Logo" class="w-full h-full object-contain">
             </div>
             <span>GitHub Issues Tracker</span>
         </div>
@@ -57,7 +57,7 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
         <div class="bg-white rounded-t-2xl border border-gray-200 p-8 flex justify-between items-center shadow-sm">
             <div class="flex items-center gap-5">
                 <div class="bg-indigo-50 p-1 rounded-2xl overflow-hidden w-12 h-12 flex items-center justify-center">
-                    <img src="B13-A5-Github-Issue-Tracker/assets/Aperture.png" class="w-full h-full object-cover rounded-xl" alt="Logo">
+                    <img src="assets/Aperture.png" class="w-full h-full object-cover rounded-xl" alt="Logo">
                 </div>
                 <div>
                     <h2 id="issueStats" class="text-2xl font-black text-gray-800">0 Issues</h2>
@@ -65,8 +65,8 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
                 </div>
             </div>
             <div class="flex gap-6 text-sm font-bold">
-                <span class="flex items-center gap-2"><span><img src="B13-A5-Github-Issue-Tracker/assets/Open-Status.png" alt=""></span> Open</span>
-                <span class="flex items-center gap-2"><span><img src="B13-A5-Github-Issue-Tracker/assets/Closed- Status .png" alt=""></span> Closed</span>
+                <span class="flex items-center gap-2"><span><img src="assets/Open-Status.png" alt=""></span> Open</span>
+                <span class="flex items-center gap-2"><span><img src="assets/Closed- Status .png" alt=""></span> Closed</span>
             </div>
         </div>
 
@@ -74,6 +74,20 @@ if (localStorage.getItem("isLoggedIn") !== "true") {
             <div class="col-span-full text-center py-10 text-gray-400">Loading issues...</div>
         </div>
     </div>
+
+        <!-- Modal Section -->
+
+    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box max-w-lg p-0 bg-white rounded-3xl overflow-hidden shadow-2xl relative">
+            <div id="details-container"></div>
+            <div class="p-5 bg-gray-50 flex justify-end border-t border-gray-100">
+                <form method="dialog">
+                    <button class="btn btn-md bg-[#4c00ff] border-none text-white px-10 rounded-xl hover:bg-indigo-700 capitalize transition-all">Close</button>
+                </form>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop"><button>close</button></form>
+    </dialog>
 
 
     <script src="JavaScript/script.js"></script>
