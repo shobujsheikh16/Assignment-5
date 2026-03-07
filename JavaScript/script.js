@@ -114,3 +114,15 @@ function filterIssues(status, btn) {
         render(filtered);
     }, 200);
 }
+async function handleSearch() {
+    const q = document.getElementById('searchInput').value;
+    if (q === "") { render(allIssues); return; }
+    showLoading();
+    try {
+        const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${q}`);
+        const data = await res.json();
+        render(data.data || []);
+    } catch (error) { console.error(error); }
+}
+
+loadData();
