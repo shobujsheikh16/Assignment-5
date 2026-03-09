@@ -44,7 +44,7 @@ function render(data) {
                     <div class="w-6 h-6 flex items-center justify-center">
                         <img src="${iconPath}" alt="Status Icon" class="w-full h-full object-contain">
                     </div>
-                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-gray-50 text-gray-400 uppercase tracking-tighter">${item.priority || 'MEDIUM'}</span>
+                    <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-50 text-gray-400 uppercase tracking-tighter">${item.priority || 'MEDIUM'}</span>
                 </div>
                 <h3 class="font-bold text-gray-800 text-[15px] mb-2 line-clamp-2 leading-tight">${item.title || 'No Title'}</h3>
                 <p class="text-[12px] text-gray-400 line-clamp-2 mb-4 leading-relaxed">${item.description || 'No description available.'}</p>
